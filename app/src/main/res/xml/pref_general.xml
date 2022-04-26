@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_newsfeed_url"
+        android:key="@string/settings_newsfeed_url_key"
+        android:title="@string/settings_newsfeed_title"
+        />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/settings_output_visible_default"
+        android:key="@string/settings_display_images_key"
+        android:summaryOff="@string/settings_display_images_summary_off"
+        android:summaryOn="@string/settings_display_images_summary_on"
+        android:title="@string/settings_display_images_title"
+        />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/settings_output_visible_default"
+        android:key="@string/settings_background_download_key"
+        android:summaryOff="@string/settings_background_download_summary_off"
+        android:summaryOn="@string/settings_background_download_summery_on"
+        android:title="@string/settings_background_download_title"
+        />
+
+</androidx.preference.PreferenceScreen>

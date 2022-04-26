@@ -9,7 +9,8 @@ class NewsItem(var identifier : String,
                var imageUrl : String?,
                var author : String?,
                var publicationDate : String,
-               var keywords : Set<String>)  :
+               var keywords : Set<String>) :
+               //var keywords : String)  :
     Serializable {
 
     }
