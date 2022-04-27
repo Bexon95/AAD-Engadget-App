@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     }
 
     private var adapter: ListAdapter? = null
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
         adapter = ListAdapter()
         recyclerView.adapter = adapter
@@ -56,14 +59,17 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
         lifecycleScope.launchWhenStarted {
             //load("https://www.engadget.com/rss.xml")
-            load(getString(R.string.settings_newsfeed_url))
+            load(sharedPreferences.getString(getString(R.string.settings_newsfeed_url_key),
+                getString(R.string.settings_newsfeed_url)).toString())
         }
 
         var generateButton = findViewById<Button>(R.id.btn_generate)
         generateButton.setOnClickListener {
             lifecycleScope.launchWhenStarted {
                 //load("https://www.engadget.com/rss.xml")
-                load(getString(R.string.settings_newsfeed_url))
+                load(sharedPreferences.getString(getString(R.string.settings_newsfeed_url_key),
+                    getString(R.string.settings_newsfeed_url)).toString())
+                Toast.makeText(applicationContext, "Articles loaded", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -142,10 +148,16 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-//        if (key.equals(getString(R.string.settings_newsfeed_url))){
-//            loadContent()
-//        }
-        //load("https://www.engadget.com/rss.xml")
+        if (key.equals(getString(R.string.settings_newsfeed_url_key))){
+            lifecycleScope.launchWhenStarted {
+                load(
+                    sharedPreferences!!.getString(
+                        getString(R.string.settings_newsfeed_url_key),
+                        getString(R.string.settings_newsfeed_url)
+                    ).toString()
+                )
+            }
+        }
     }
 
 

@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
 
@@ -36,6 +38,11 @@ class DetailActivity : AppCompatActivity() {
         textViewNewsItemPublicationDate.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.publicationDate
         textViewNewsItemArticleLink.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.link
         textViewNewsItemKeywords.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.keywords.toString()
+
+//        val imageViewHeader: ImageView = findViewById<ImageView>(R.id.iv_item_thumbnail)
+//        Glide.with(this)
+//            .load((intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.imageUrl)
+//            .into(imageViewHeader)
 
         btnFullStory.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(textViewNewsItemArticleLink.text as String?))
