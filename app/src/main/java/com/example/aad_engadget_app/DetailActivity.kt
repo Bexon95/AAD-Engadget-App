@@ -30,6 +30,10 @@ class DetailActivity : AppCompatActivity() {
         val textViewNewsItemKeywords = findViewById<TextView>(R.id.tv_news_item_keywords)
         val btnFullStory = findViewById<Button>(R.id.btn_full_story)
 
+        val mItemTitleTextView = findViewById<TextView>(R.id.tv_item_title)
+        val mItemAuthorTextView = findViewById<TextView>(R.id.tv_item_author)
+        val mItemDateTextView = findViewById<TextView>(R.id.tv_item_date)
+
         textViewNewsItemId.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.identifier.toString()
         textViewNewsItemTitle.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.title
         textViewNewsItemDescription.text = Html.fromHtml((intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.description)
@@ -37,12 +41,15 @@ class DetailActivity : AppCompatActivity() {
         textViewNewsItemAuthor.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.author
         textViewNewsItemPublicationDate.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.publicationDate
         textViewNewsItemArticleLink.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.link
-        textViewNewsItemKeywords.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.keywords.toString()
+        textViewNewsItemKeywords.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.keywords
 
-//        val imageViewHeader: ImageView = findViewById<ImageView>(R.id.iv_item_thumbnail)
-//        Glide.with(this)
-//            .load((intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.imageUrl)
-//            .into(imageViewHeader)
+        val imageViewHeader: ImageView = findViewById<ImageView>(R.id.iv_item_thumbnail)
+        mItemTitleTextView.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.title
+        mItemAuthorTextView.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.author
+        mItemDateTextView.text = (intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.publicationDate
+        Glide.with(this)
+            .load((intent.getSerializableExtra(NEWS_ITEM_KEY) as? NewsItem)?.imageUrl)
+            .into(imageViewHeader)
 
         btnFullStory.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(textViewNewsItemArticleLink.text as String?))

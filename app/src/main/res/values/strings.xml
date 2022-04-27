@@ -19,5 +19,6 @@
     <string name="settings_background_download_summary_off">Images will not be downloaded in the background</string>
     <string name="settings_background_download_summery_on">Images will be downloaded in the background</string>
     <string name="full_story">Full Story</string>
+    <string name="reload">Reload</string>
 
 </resources>

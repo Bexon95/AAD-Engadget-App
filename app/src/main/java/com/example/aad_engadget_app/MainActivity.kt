@@ -13,9 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aad_engadget_app.settings.SettingsActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.descriptors.PrimitiveKind
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 import java.net.HttpURLConnection
@@ -143,6 +143,16 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
             return true
+        } else if (itemId == R.id.action_reload) {
+            lifecycleScope.launchWhenStarted {
+                load(
+                    sharedPreferences!!.getString(
+                        getString(R.string.settings_newsfeed_url_key),
+                        getString(R.string.settings_newsfeed_url)
+                    ).toString()
+                )
+            }
+            Toast.makeText(applicationContext, "Articles loaded", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }

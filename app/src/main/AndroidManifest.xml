@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AADEngadgetApp">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".settings.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".DetailActivity"

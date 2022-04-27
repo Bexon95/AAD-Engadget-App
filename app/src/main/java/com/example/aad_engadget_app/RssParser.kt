@@ -80,7 +80,7 @@ class RssParser {
         var description: String? = null
         var imgString: String? = null
         var publishedOn: String? = null
-        val keywords: MutableSet<String> = HashSet()
+        var keywords: String? = null
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.eventType != XmlPullParser.START_TAG) {
                 continue
@@ -91,7 +91,7 @@ class RssParser {
                 "category" -> {
                     val keyword = readBasicTag(parser, "category")?.trim()
                     if (keyword != null)
-                        keywords.add(keyword)
+                        keywords += " $keyword"
                 }
                 "link" -> link = readBasicTag(parser, "link")?.trim()
                 "pubDate" -> publishedOn = readBasicTag(parser,"pubDate")?.trim()
