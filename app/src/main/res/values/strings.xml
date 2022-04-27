@@ -6,8 +6,8 @@
     <string name="settings">Settings</string>
 
     <string name="settings_newsfeed_title">Newsfeed URL</string>
-    <string name="settings_newsfeed_url">https://www.engadget.com/rss.xml</string>
     <string name="settings_newsfeed_url_key">newsfeed_url</string>
+    <string name="settings_newsfeed_url">https://www.engadget.com/rss.xml</string>
 
     <string name="settings_display_images_key">display_images</string>
     <string name="settings_display_images_title">Display Images</string>

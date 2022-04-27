@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -30,9 +31,11 @@ class ListAdapter(items: List<NewsItem>? = listOf<NewsItem>()) :
         private val mItemTitleTextView = itemView.findViewById<TextView>(R.id.tv_item_title)
         private val mItemAuthorTextView = itemView.findViewById<TextView>(R.id.tv_item_author)
         private val mItemDateTextView = itemView.findViewById<TextView>(R.id.tv_item_date)
-        private val mItemThumbnail = itemView.findViewById<ImageView>(R.id.tv_item_thumbnail)
+        private val mItemThumbnail = itemView.findViewById<ImageView>(R.id.iv_item_thumbnail)
+        //private val mItemHeader = itemView.findViewById<ImageView>(R.id.iv_item_header) //does not yet work
         //private val mItemNameTextView = itemView.findViewById<TextView>(R.id.tv_item_name)
         private val mLayout = itemView.findViewById<LinearLayout>(R.id.ll_view)
+        private val mLayoutTop = itemView.findViewById<FrameLayout>(R.id.ll_view_top)
 
         init {
             itemView.setOnClickListener { itemClickListener?.invoke(items!![absoluteAdapterPosition]) }

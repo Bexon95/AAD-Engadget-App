@@ -12,6 +12,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/iv_item_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"/>
+
         <TextView
             android:id="@+id/tv_news_item_identifier"
             android:layout_width="match_parent"
