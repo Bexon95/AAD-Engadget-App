@@ -7,7 +7,7 @@ import androidx.room.*
 interface NewsItemDao {
 
     //in entries steht immer der output von diesem query drin (dran koppeln)
-    @get:Query("SELECT * FROM articles ORDER BY publicationDate")
+    @get:Query("SELECT * FROM newsItems ORDER BY publicationDate")
     val entries: LiveData<List<NewsItem>>
 
     @Insert
@@ -16,5 +16,7 @@ interface NewsItemDao {
     suspend fun update(entry: NewsItem)
     @Delete
     suspend fun delete(entry: NewsItem)
+    @Query("DELETE FROM newsItems;")
+    suspend fun deleteAll()
 
 }

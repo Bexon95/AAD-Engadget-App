@@ -13,4 +13,8 @@ class Repository (private val entryDao: NewsItemDao) {
     suspend fun delete(entry: NewsItem){
         entryDao.delete(entry)
     }
+
+    suspend fun deleteAll() {
+        entryDao.deleteAll()
+    }
 }
