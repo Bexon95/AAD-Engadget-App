@@ -1,6 +1,8 @@
-package com.example.aad_engadget_app
+package com.example.aad_engadget_app.database
 
 import androidx.lifecycle.LiveData
+import com.example.aad_engadget_app.NewsItem
+import com.example.aad_engadget_app.NewsItemDao
 
 class Repository (private val entryDao: NewsItemDao) {
 
