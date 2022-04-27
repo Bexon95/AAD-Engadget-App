@@ -55,19 +55,22 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         }
 
         lifecycleScope.launchWhenStarted {
-            load("https://www.engadget.com/rss.xml")
+            //load("https://www.engadget.com/rss.xml")
+            load(getString(R.string.settings_newsfeed_url))
         }
 
         var generateButton = findViewById<Button>(R.id.btn_generate)
         generateButton.setOnClickListener {
             lifecycleScope.launchWhenStarted {
-                load("https://www.engadget.com/rss.xml")
+                //load("https://www.engadget.com/rss.xml")
+                load(getString(R.string.settings_newsfeed_url))
             }
         }
 
     }
 
     suspend fun load(urlString: String) {
+        Log.d(LOG_TAG, "the url is: $urlString")
         val result = withContext(Dispatchers.IO) {
             loadInt(urlString)
         }
@@ -120,8 +123,10 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         }
     }
 
+
+
     //Settings Menu
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean { //warum kein "menu: Menu?" mehr?
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
