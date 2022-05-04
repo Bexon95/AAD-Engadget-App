@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                     return null
                 }
                 Log.d(LOG_TAG, "Start parsing ...")
-                val parser = RssParser()
+                val parser = RssParser(this, getString(R.string.settings_newsfeed_url))
                 val result = parser.parse(urlConnection.inputStream)
                 Log.d(LOG_TAG, "Parsing finished.")
                 result
